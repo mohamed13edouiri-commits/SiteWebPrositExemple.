@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Candidatures - Web-AAA Formation</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .form-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            background-color: var(--card);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: var(--font-weight-semibold);
+            color: var(--foreground);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--input-background);
+            color: var(--foreground);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            background-color: white;
+        }
+
+        .form-group small {
+            display: block;
+            margin-top: 0.25rem;
+            color: var(--muted-foreground);
+            font-size: 0.85rem;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: var(--cta-orange);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--cta-orange-hover);
+        }
+
+        .candidatures-list {
+            max-width: 900px;
+            margin: 2rem auto;
+        }
+
+        .candidature-item {
+            background-color: var(--card);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .candidature-item h3 {
+            margin: 0 0 0.5rem 0;
+            color: var(--foreground);
+        }
+
+        .candidature-item p {
+            margin: 0.25rem 0;
+            color: var(--muted-foreground);
+            font-size: 0.95rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: calc(var(--radius) - 0.25rem);
+            font-size: 0.75rem;
+            font-weight: var(--font-weight-semibold);
+            margin-top: 0.75rem;
+        }
+
+        .status-pending {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-accepted {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+
+        .status-rejected {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <header>
+        <div class="header-content">
+            <div class="logo">Web-AAA Formation</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="toutes-les-offres.html">Toutes les offres</a></li>
+                    <li><a href="candidatures.html">Candidatures soumettre</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Title Section -->
+    <section class="hero" style="padding: 2rem;">
+        <div class="hero-content">
+            <h1>Gérer Vos Candidatures</h1>
+            <p>Soumettez votre candidature et suivez l'avancement de vos demandes</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Formulaire de candidature -->
+        <div class="form-container">
+            <h2 style="margin-bottom: 1.5rem;">Soumettre une Candidature</h2>
+            <form>
+                <div class="form-group">
+                    <label for="nom">Nom Complet *</label>
+                    <input type="text" id="nom" name="nom" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Adresse Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Téléphone *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="offre">Offre d'Emploi *</label>
+                    <select id="offre" name="offre" required>
+                        <option value="">-- Sélectionnez une offre --</option>
+                        <option value="dev-web">Développeur Web Full-Stack</option>
+                        <option value="chef-projet">Chef de Projet</option>
+                        <option value="community">Community Manager</option>
+                        <option value="uxui">Designer UX/UI</option>
+                        <option value="data">Data Analyst</option>
+                        <option value="mobile">Développeur Mobile Native</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cv">Joindre votre CV *</label>
+                    <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required>
+                    <small>Format acceptés: PDF, DOC, DOCX (max 5MB)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="lettre">Lettre de Motivation</label>
+                    <textarea id="lettre" name="lettre" placeholder="Parlez-nous de votre motivation..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Envoyer ma Candidature</button>
+            </form>
+        </div>
+
+        <!-- Historique des candidatures -->
+        <div class="candidatures-list">
+            <h2 style="margin-bottom: 1.5rem;">Vos Candidatures Récentes</h2>
+
+            <div class="candidature-item">
+                <h3>Développeur Web Full-Stack</h3>
+                <p><strong>Entreprise:</strong> TechCorp Solutions</p>
+                <p><strong>Date de candidature:</strong> 1er Février 2026</p>
+                <p><strong>Localisation:</strong> Paris</p>
+                <span class="status-badge status-pending">En attente de réponse</span>
+            </div>
+
+            <div class="candidature-item">
+                <h3>Designer UX/UI</h3>
+                <p><strong>Entreprise:</strong> Creative Studio</p>
+                <p><strong>Date de candidature:</strong> 30 Janvier 2026</p>
+                <p><strong>Localisation:</strong> Toulouse</p>
+                <span class="status-badge status-accepted">Accepté ✓</span>
+            </div>
+
+            <div class="candidature-item">
+                <h3>Data Analyst</h3>
+                <p><strong>Entreprise:</strong> DataTech Pro</p>
+                <p><strong>Date de candidature:</strong> 25 Janvier 2026</p>
+                <p><strong>Localisation:</strong> Nantes</p>
+                <span class="status-badge status-rejected">Refusé</span>
+            </div>
+
+            <div class="candidature-item">
+                <h3>Community Manager</h3>
+                <p><strong>Entreprise:</strong> Social Media Group</p>
+                <p><strong>Date de candidature:</strong> 20 Janvier 2026</p>
+                <p><strong>Localisation:</strong> Bordeaux</p>
+                <span class="status-badge status-pending">En attente de réponse</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <ul class="footer-links">
+                <li><a href="#mentions">Mentions Légales</a></li>
+                <li><a href="#cookies">Politique de Cookies</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <p class="footer-copyright">© 2024 Web-AAA Formation - Tous droits réservés</p>
+        </div>
+    </footer>
+</body>
+</html>
